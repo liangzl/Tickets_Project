@@ -17,13 +17,21 @@ def read_datafile(datafile,showtime = False):
      if showtime:
          print "Time for reading data from data : " + start_time
 
-## Train the model of random forest
+
+## train the model of random forest
 
 file = "test.csv"
 train_data = readdata(file)
 clf = RandomForestClassifier(n_estimators=30)
-clf = cfl.fit(train_data[:,0:-1],train_data[:,-1])
+X = train_data[:,0:-1]
+y = rain_data[:,-1]
+clf = cfl.fit(X,y)
 
+## use cross validation to test the model
+scores = cross_val_score(clf, X, y)
+
+## print the score 
+print score.mean()
 
      
      
